@@ -6,7 +6,7 @@ from typing import Tuple
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """Function that return a paginated pages range from a given page and size."""
+    """Function that return a range from a given page and size."""
     last_element = page * page_size
     first_element = last_element - page_size
     return (first_element, last_element)
