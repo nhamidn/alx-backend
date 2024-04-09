@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 app = Flask(__name__)
+
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
@@ -26,6 +27,7 @@ babel = Babel(app)
 
 
 def get_user():
+    """Retrieves a user based on a user id."""
     user_id = request.args.get("login_as")
     if user_id is not None:
         try:
@@ -48,6 +50,7 @@ def get_locale():
 
 @app.before_request
 def before_request():
+    """Get user before each request's resolution."""
     g.user = get_user()
 
 
